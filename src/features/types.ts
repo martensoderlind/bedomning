@@ -3,4 +3,5 @@ export type StudentType = {
   name: string;
   email: string;
   class: string;
+  grade: string;
 };
