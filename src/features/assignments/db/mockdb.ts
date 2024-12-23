@@ -144,19 +144,19 @@ export const db = [
 export const dbAssignments = [
   {
     id: 1,
-    assignment: 1,
+    assignment: "Bollsport",
     criteria: [1, 2],
     description: "",
   },
   {
     id: 2,
-    assignment: 2,
+    assignment: "Dans",
     criteria: [2, 3],
     description: "",
   },
   {
     id: 3,
-    assignment: 3,
+    assignment: "Orientering",
     criteria: [1, 3],
     description: "",
   },

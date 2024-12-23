@@ -8,7 +8,7 @@ export type AssignmentGrade = {
 
 export type AssignmentType = {
   id: number;
-  assignment: number;
+  assignment: string;
   criteria: number[];
   description: string;
 };

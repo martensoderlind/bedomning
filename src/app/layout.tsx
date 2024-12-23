@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Roboto } from "next/font/google";
+import Menu from "@/components/menu";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.className} antialiased overscroll-none p-0 bg-slate-100`}
+        className={`${roboto.className} antialiased overscroll-none p-0 bg-slate-100 flex`}
       >
+        <Menu />
         {children}
       </body>
     </html>

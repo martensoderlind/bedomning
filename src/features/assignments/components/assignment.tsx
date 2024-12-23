@@ -1,5 +1,6 @@
 import React from "react";
 import { AssignmentType } from "../types";
+import { ChevronDown } from "lucide-react";
 
 type Props = {
   assignment: AssignmentType;
@@ -7,9 +8,9 @@ type Props = {
 
 export default function Assignment({ assignment }: Props) {
   return (
-    <div className="flex">
-      <p>Assignment {assignment.assignment}</p>
-      <p>criteria {assignment.criteria}</p>
+    <div className="flex justify-between my-2 border-b-2">
+      <p>{assignment.assignment}</p>
+      <ChevronDown />
     </div>
   );
 }
