@@ -7,9 +7,9 @@ export default function AssignmentDashboard() {
   const assignments = dbAssignments;
   return (
     <div className="container mx-auto my-4 w-full">
-      <div className="flex justify-between mx-8 my-0">
+      <div className="flex justify-between mx-8 my-4">
         <p className="text-2xl font-bold pt-2 pl-3">Assignments</p>
-        <button className="flex rounded-md bg-black text-gray-200 py-2 px-2 pr-4">
+        <button className="flex rounded-md bg-black text-gray-200 py-2 px-2 pr-4 my-0">
           <Plus />
           Add Assignments
         </button>
