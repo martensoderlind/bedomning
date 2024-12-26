@@ -6,3 +6,11 @@ export const assignments = pgTable("assignments", {
   criteria: integer("numbers").array(),
   description: varchar("description").notNull(),
 });
+export const studentAssignment = pgTable("studentAssignment", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  assignmentId: varchar("assignmentId").notNull(),
+  studentId: varchar("studentId").notNull(),
+  grade: integer("grade").array(),
+  criteria: varchar("criteria").notNull(),
+  comment: varchar("comment"),
+});
