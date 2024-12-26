@@ -140,3 +140,14 @@ export const db = [
     grade: "D",
   },
 ];
+
+export const dbClass = [
+  {
+    id: 1,
+    name: "1A",
+  },
+  {
+    id: 2,
+    name: "2A",
+  },
+];

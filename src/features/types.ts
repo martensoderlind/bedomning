@@ -5,3 +5,8 @@ export type StudentType = {
   class: string;
   grade: string;
 };
+
+export type ClassInfo = {
+  id: number;
+  name: string;
+};
