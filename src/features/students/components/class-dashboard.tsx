@@ -1,10 +1,10 @@
 import React from "react";
 import { Plus } from "lucide-react";
-import { dbClass } from "../db/mockdb";
 import ClassInformation from "./class";
+import { studentsService } from "../instance";
 
-export default function ClassDashboard() {
-  const classes = dbClass;
+export default async function ClassDashboard() {
+  const classes = await studentsService.getAllClasses();
   return (
     <div className="container mx-auto my-4 w-full">
       <div className="flex justify-between mx-8 my-4">

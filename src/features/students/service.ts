@@ -4,8 +4,11 @@ import { createRepository } from "./repository";
 export function createService(db: Db) {
   const repository = createRepository(db);
   return {
-    getAll: async () => {
-      return await repository.getAll();
+    getAllClasses: async () => {
+      return await repository.getAllClasses();
+    },
+    getAllStudents: async () => {
+      return await repository.getAllStudents();
     },
   };
 }
