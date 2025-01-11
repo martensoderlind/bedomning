@@ -7,6 +7,6 @@ export type StudentType = {
 };
 
 export type ClassInfo = {
-  id: number;
-  name: string;
+  className: string;
+  id: string;
 };

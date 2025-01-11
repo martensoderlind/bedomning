@@ -9,7 +9,7 @@ type Prop = {
 export default function ClassInformation({ classInfo }: Prop) {
   return (
     <div className="flex justify-between my-2 border-b-2">
-      <p>{classInfo.name}</p>
+      <p>{classInfo.className}</p>
       <ChevronRight />
     </div>
   );
