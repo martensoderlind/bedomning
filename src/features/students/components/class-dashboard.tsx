@@ -7,7 +7,7 @@ export default async function ClassDashboard() {
 
   return (
     <div className="container mx-auto my-4 w-full">
-      <div className="flex justify-between mx-8 my-4">
+      <div className="justify-between mx-8 my-4">
         <p className="text-2xl font-bold pt-2 pl-3">Classes</p>
         <AddClassButton />
       </div>
