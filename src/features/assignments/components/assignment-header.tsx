@@ -1,7 +1,7 @@
 "use client";
 import { Plus } from "lucide-react";
 import React, { useState } from "react";
-import { AssignmentType } from "../types";
+import { AddAssignment } from "../types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { addAssignmentAction } from "../actions";
 
@@ -12,13 +12,13 @@ export default function AssignmentHeader() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AssignmentType>();
+  } = useForm<AddAssignment>();
 
   function toggleForm() {
     setAddAssignment(!addAssignment);
   }
 
-  const onSubmit: SubmitHandler<AssignmentType> = async (data) => {
+  const onSubmit: SubmitHandler<AddAssignment> = async (data) => {
     await addAssignmentAction(data);
     setAddAssignment(!addAssignment);
   };

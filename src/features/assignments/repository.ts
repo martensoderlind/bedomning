@@ -14,6 +14,7 @@ export function createRepository(db: Db) {
       await db.insert(assignments).values({
         id: assignmentId,
         assignment: assignment.assignment,
+        course: assignment.course,
         description: assignment.description,
       });
       await db.insert(assignmentCriteria).values([

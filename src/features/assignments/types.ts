@@ -9,11 +9,19 @@ export type AssignmentGrade = {
 export type AssignmentType = {
   id: string;
   assignment: string;
+  course: string;
   description: string;
 };
 export type Criteria = {
   id: string;
   course: string;
   grade: string;
+  description: string;
+};
+export type AddAssignment = {
+  id: string;
+  assignment: string;
+  course: string;
+  criteria: Criteria[];
   description: string;
 };
