@@ -43,7 +43,7 @@ export default function AddClassButton() {
             pattern: /^[A-Za-z1-9]+$/i,
           })}
         />
-        <button className="flex rounded-md bg-black text-gray-200 py-2 px-2 pr-4 my-0">
+        <button className="flex rounded-md bg-black text-gray-200 py-2 px-2 pr-3 my-0">
           Add
         </button>
       </div>
