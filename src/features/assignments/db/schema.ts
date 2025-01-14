@@ -3,6 +3,9 @@ import { integer, pgTable, uuid, varchar } from "drizzle-orm/pg-core";
 
 export const assignments = pgTable("assignments", {
   id: uuid("id").defaultRandom().primaryKey(),
+  course: uuid("course_id")
+    .notNull()
+    .references(() => course.id, { onDelete: "cascade" }),
   assignment: varchar("assignment").notNull(),
   description: varchar("description").notNull(),
 });
