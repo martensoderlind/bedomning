@@ -1,7 +1,7 @@
 import React from "react";
 import Assignment from "./assignment";
-import { Plus } from "lucide-react";
 import { assignmentService } from "../instance";
+import AssignmentHeader from "./assignment-header";
 
 export default async function AssignmentDashboard() {
   // const assignments = dbAssignments;
@@ -10,26 +10,14 @@ export default async function AssignmentDashboard() {
   if (!assignments) {
     return (
       <div className="container mx-auto my-4 w-full">
-        <div className="flex justify-between mx-8 my-4">
-          <p className="text-2xl font-bold pt-2 pl-3">Assignments</p>
-          <button className="flex rounded-md bg-black text-gray-200 py-2 px-2 pr-4 my-0">
-            <Plus />
-            Add Assignments
-          </button>
-        </div>
+        <AssignmentHeader />
         <div className="rounded-md bg-white mx-8 my-2 py-2 px-4 border-1"></div>
       </div>
     );
   }
   return (
     <div className="container mx-auto my-4 w-full">
-      <div className="flex justify-between mx-8 my-4">
-        <p className="text-2xl font-bold pt-2 pl-3">Assignments</p>
-        <button className="flex rounded-md bg-black text-gray-200 py-2 px-2 pr-4 my-0">
-          <Plus />
-          Add Assignments
-        </button>
-      </div>
+      <AssignmentHeader />
       <div className="rounded-md bg-white mx-8 my-2 py-2 px-4 border-1">
         {assignments.map((assignment) => (
           <Assignment key={assignment.id} assignment={assignment} />

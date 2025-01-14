@@ -9,6 +9,11 @@ export type AssignmentGrade = {
 export type AssignmentType = {
   id: string;
   assignment: string;
-  criteria: number[] | null;
+  description: string;
+};
+export type Criteria = {
+  id: string;
+  course: string;
+  grade: string;
   description: string;
 };
