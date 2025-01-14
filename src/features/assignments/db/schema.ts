@@ -15,8 +15,8 @@ export const criteria = pgTable("criteria", {
   course: uuid("course_id")
     .notNull()
     .references(() => course.id, { onDelete: "cascade" }),
-  grade: varchar("description").notNull(),
-  criteria: integer("numbers").array(),
+  grade: varchar("grade").notNull(),
+  criteria: varchar("criteria").notNull(),
 });
 
 export const course = pgTable("course", {
