@@ -9,5 +9,8 @@ export function createRepository(db: Db) {
     async getAllClasses() {
       return await db.select().from(classTable);
     },
+    async addClass(name: string) {
+      await db.insert(classTable).values({ className: name });
+    },
   };
 }

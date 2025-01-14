@@ -10,5 +10,8 @@ export function createService(db: Db) {
     getAllStudents: async () => {
       return await repository.getAllStudents();
     },
+    addClass: async (name: string) => {
+      await repository.addClass(name);
+    },
   };
 }
