@@ -25,3 +25,8 @@ export type AddAssignment = {
   criteria: Criteria[];
   description: string;
 };
+
+export type Course = {
+  id: string;
+  name: string;
+};
