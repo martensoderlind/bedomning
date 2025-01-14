@@ -13,5 +13,8 @@ export function createService(db: Db) {
     addClass: async (name: string) => {
       await repository.addClass(name);
     },
+    deleteClass: async (id: string) => {
+      await repository.deleteClass(id);
+    },
   };
 }

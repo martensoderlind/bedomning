@@ -15,7 +15,7 @@ export default function AddClassButton() {
   } = useForm<ClassInfo>();
 
   const onSubmit: SubmitHandler<ClassInfo> = async (data) => {
-    addClassAction(data.className);
+    await addClassAction(data.className);
     setAddClass(!addClass);
   };
 
