@@ -1,16 +1,24 @@
 import { ClassInfo } from "@/features/types";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Trash2 } from "lucide-react";
 import React from "react";
 
 type Prop = {
   classInfo: ClassInfo;
+  lastClass: boolean;
 };
 
-export default function ClassInformation({ classInfo }: Prop) {
+export default function ClassInformation({ classInfo, lastClass }: Prop) {
   return (
-    <div className="flex justify-between my-2 border-b-2">
+    <div
+      className={`flex justify-between my-2 py-2 ${
+        lastClass ? undefined : "border-b-2"
+      }`}
+    >
       <p>{classInfo.className}</p>
-      <ChevronRight />
+      <div className="flex">
+        <ChevronRight className="mx-4" />
+        <Trash2 />
+      </div>
     </div>
   );
 }
