@@ -6,10 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "db:studio":"npx drizzle-kit studio",
+    "db:studio": "npx drizzle-kit studio",
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
     "@neondatabase/serverless": "^0.10.4",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.38.3",
@@ -17,7 +18,8 @@
     "next": "15.1.2",
     "pg": "^8.13.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
