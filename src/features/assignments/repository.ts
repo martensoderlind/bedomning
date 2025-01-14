@@ -1,6 +1,6 @@
 import { Db } from "@/db";
-import { assignmentCriteria, assignments } from "./db/schema";
-import { AssignmentType } from "./types";
+import { assignmentCriteria, assignments, course, criteria } from "./db/schema";
+import { AssignmentType, Criteria } from "./types";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 
@@ -28,8 +28,18 @@ export function createRepository(db: Db) {
         },
       ]);
     },
-    async delete(id: string) {
+    async deleteAssignment(id: string) {
       db.delete(assignments).where(eq(assignments.id, id));
+    },
+    async addCriteria(newCriteria: Criteria) {
+      db.insert(criteria).values({
+        course: newCriteria.course,
+        grade: newCriteria.grade,
+        criteria: newCriteria.description,
+      });
+    },
+    async addCourse(name: string) {
+      db.insert(course).values({ name: name });
     },
   };
 }

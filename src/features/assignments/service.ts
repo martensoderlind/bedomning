@@ -1,6 +1,6 @@
 import { Db } from "@/db";
 import { createRepository } from "./repository";
-import { AssignmentType } from "./types";
+import { AssignmentType, Criteria } from "./types";
 
 export function createService(db: Db) {
   const repository = createRepository(db);
@@ -12,7 +12,13 @@ export function createService(db: Db) {
       await repository.addAssignment(data);
     },
     deleteAssignment: async (id: string) => {
-      await repository.delete(id);
+      await repository.deleteAssignment(id);
+    },
+    addCourse: async (id: string) => {
+      await repository.addCourse(id);
+    },
+    addCriteria: async (criteria: Criteria) => {
+      await repository.addCriteria(criteria);
     },
   };
 }
