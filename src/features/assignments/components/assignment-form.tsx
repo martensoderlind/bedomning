@@ -26,7 +26,10 @@ export default function AssignmentForm({
     setAddAssignment(!addAssignment);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col border-b-2 pb-2"
+    >
       <input
         type="text"
         alt="name of assignment"

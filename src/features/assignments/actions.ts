@@ -9,10 +9,10 @@ export async function addAssignmentAction(assignment: AssignmentType) {
   revalidatePath("/assignments");
 }
 export async function addCourseAction(name: string) {
-  assignmentService.addCourse(name);
+  await assignmentService.addCourse(name);
   revalidatePath("/assignments");
 }
 export async function addCriteriaAction(criteria: Criteria) {
-  assignmentService.addCriteria(criteria);
+  await assignmentService.addCriteria(criteria);
   revalidatePath("/assignments");
 }

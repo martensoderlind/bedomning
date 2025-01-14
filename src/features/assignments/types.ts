@@ -13,7 +13,7 @@ export type AssignmentType = {
   description: string;
 };
 export type Criteria = {
-  id: string;
+  id?: string;
   course: string;
   grade: string;
   description: string;

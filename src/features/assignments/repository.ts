@@ -32,14 +32,16 @@ export function createRepository(db: Db) {
       db.delete(assignments).where(eq(assignments.id, id));
     },
     async addCriteria(newCriteria: Criteria) {
-      db.insert(criteria).values({
+      console.log(newCriteria);
+      await db.insert(criteria).values({
         course: newCriteria.course,
         grade: newCriteria.grade,
         criteria: newCriteria.description,
       });
     },
     async addCourse(name: string) {
-      db.insert(course).values({ name: name });
+      console.log(name);
+      await db.insert(course).values({ name: name });
     },
   };
 }

@@ -1,7 +1,9 @@
+"use client";
 import { Plus } from "lucide-react";
 import React, { Dispatch, SetStateAction } from "react";
 import { Course } from "../types";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { addCourseAction } from "../actions";
 
 type Props = {
   setAddAssignment: Dispatch<SetStateAction<boolean>>;
@@ -16,11 +18,14 @@ export default function CourseForm({ setAddAssignment, addAssignment }: Props) {
   } = useForm<Course>();
 
   const onSubmit: SubmitHandler<Course> = async (data: Course) => {
-    console.log(data);
+    await addCourseAction(data.name);
     setAddAssignment(!addAssignment);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col border-b-2 pb-2"
+    >
       <input
         type="text"
         alt="name of course"
@@ -28,7 +33,7 @@ export default function CourseForm({ setAddAssignment, addAssignment }: Props) {
         className="py-2 px-2 pr-4 my-2 rounded-md mx-2"
         {...register("name", {
           required: true,
-          pattern: /^[A-Za-z1-9]+$/i,
+          pattern: /^[a-öA-Ö\s]+$/i,
         })}
       />
       {errors.name && (
