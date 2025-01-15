@@ -1,6 +1,5 @@
 "use client";
 import { Plus } from "lucide-react";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Course, Criteria } from "../types";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Label } from "../../../components/ui/label";
@@ -13,17 +12,12 @@ import {
 } from "../../../components/ui/select";
 import { Input } from "@/components/ui/input";
 import { addCriteriaAction } from "../actions";
-import { assignmentService } from "../instance";
 
 type Props = {
-  setAddAssignment: Dispatch<SetStateAction<boolean>>;
-  addAssignment: boolean;
+  courses: Course[];
 };
 
-export default function CriteriaForm({
-  setAddAssignment,
-  addAssignment,
-}: Props) {
+export default function CriteriaForm({ courses }: Props) {
   const {
     control,
     register,
@@ -36,19 +30,9 @@ export default function CriteriaForm({
       description: "",
     },
   });
-  const [activeCourses, setActiveCourses] = useState<Course[] | null>(null);
-
-  // useEffect(() => {
-  //   const getCourses = async () => {
-  //     const courses = await assignmentService.getAllCourses();
-  //     setActiveCourses(courses);
-  //   };
-  //   getCourses();
-  // }, []);
 
   const onSubmit: SubmitHandler<Criteria> = async (data: Criteria) => {
     await addCriteriaAction(data);
-    setAddAssignment(!addAssignment);
   };
 
   return (
@@ -65,7 +49,7 @@ export default function CriteriaForm({
                 <SelectValue placeholder="pick a course" />
               </SelectTrigger>
               <SelectContent>
-                {activeCourses?.map((course) => (
+                {courses?.map((course) => (
                   <SelectItem key={course.id} value={course.id}>
                     {course.name}
                   </SelectItem>

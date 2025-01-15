@@ -1,18 +1,9 @@
 import { Plus } from "lucide-react";
-import React, { Dispatch, SetStateAction } from "react";
 import { AddAssignment, AssignmentType } from "../types";
 import { addAssignmentAction } from "../actions";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-type Props = {
-  setAddAssignment: Dispatch<SetStateAction<boolean>>;
-  addAssignment: boolean;
-};
-
-export default function AssignmentForm({
-  setAddAssignment,
-  addAssignment,
-}: Props) {
+export default function AssignmentForm() {
   const {
     register,
     handleSubmit,
@@ -23,7 +14,6 @@ export default function AssignmentForm({
     data: AssignmentType
   ) => {
     await addAssignmentAction(data);
-    setAddAssignment(!addAssignment);
   };
   return (
     <form
