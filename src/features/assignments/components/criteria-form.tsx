@@ -1,6 +1,7 @@
+"use client";
 import { Plus } from "lucide-react";
-import React, { Dispatch, SetStateAction } from "react";
-import { Criteria } from "../types";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Course, Criteria } from "../types";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Label } from "../../../components/ui/label";
 import {
@@ -12,6 +13,7 @@ import {
 } from "../../../components/ui/select";
 import { Input } from "@/components/ui/input";
 import { addCriteriaAction } from "../actions";
+import { assignmentService } from "../instance";
 
 type Props = {
   setAddAssignment: Dispatch<SetStateAction<boolean>>;
@@ -34,11 +36,21 @@ export default function CriteriaForm({
       description: "",
     },
   });
+  const [activeCourses, setActiveCourses] = useState<Course[] | null>(null);
+
+  // useEffect(() => {
+  //   const getCourses = async () => {
+  //     const courses = await assignmentService.getAllCourses();
+  //     setActiveCourses(courses);
+  //   };
+  //   getCourses();
+  // }, []);
 
   const onSubmit: SubmitHandler<Criteria> = async (data: Criteria) => {
     await addCriteriaAction(data);
     setAddAssignment(!addAssignment);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
       <div className="space-y-2">
@@ -53,11 +65,16 @@ export default function CriteriaForm({
                 <SelectValue placeholder="pick a course" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="44246493-08f0-4f79-9d5a-5b79e4f5d12d">
+                {activeCourses?.map((course) => (
+                  <SelectItem key={course.id} value={course.id}>
+                    {course.name}
+                  </SelectItem>
+                ))}
+                {/* <SelectItem value="44246493-08f0-4f79-9d5a-5b79e4f5d12d">
                   c1
                 </SelectItem>
                 <SelectItem value="2">c2</SelectItem>
-                <SelectItem value="3">c3</SelectItem>
+                <SelectItem value="3">c3</SelectItem> */}
               </SelectContent>
             </Select>
           )}

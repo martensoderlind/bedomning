@@ -8,6 +8,9 @@ export function createService(db: Db) {
     getAll: async () => {
       return await repository.getAll();
     },
+    getAllCourses: async () => {
+      return await repository.getAllCourses();
+    },
     addAssignment: async (data: AssignmentType) => {
       await repository.addAssignment(data);
     },

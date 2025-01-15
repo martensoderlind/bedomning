@@ -9,6 +9,9 @@ export function createRepository(db: Db) {
     async getAll() {
       return db.select().from(assignments);
     },
+    async getAllCourses() {
+      return db.select().from(course);
+    },
     async addAssignment(assignment: AssignmentType) {
       const assignmentId = uuidv4();
       await db.insert(assignments).values({
@@ -32,7 +35,6 @@ export function createRepository(db: Db) {
       db.delete(assignments).where(eq(assignments.id, id));
     },
     async addCriteria(newCriteria: Criteria) {
-      console.log(newCriteria);
       await db.insert(criteria).values({
         course: newCriteria.course,
         grade: newCriteria.grade,
@@ -40,7 +42,6 @@ export function createRepository(db: Db) {
       });
     },
     async addCourse(name: string) {
-      console.log(name);
       await db.insert(course).values({ name: name });
     },
   };
