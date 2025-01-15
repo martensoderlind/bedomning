@@ -15,14 +15,14 @@ export type AssignmentType = {
 export type Criteria = {
   id?: string;
   course: string;
+  criteria: string;
   grade: string;
-  description: string;
 };
 export type AddAssignment = {
   id: string;
   assignment: string;
   course: string;
-  criteria: Criteria[];
+  criteria: string;
   description: string;
 };
 

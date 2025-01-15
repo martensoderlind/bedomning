@@ -10,6 +10,7 @@ export default function CourseForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Course>({
     defaultValues: {
@@ -18,10 +19,8 @@ export default function CourseForm() {
   });
 
   const onSubmit: SubmitHandler<Course> = async (data: Course) => {
-    console.log(data);
-
     await addCourseAction(data.name);
-    data.name = "";
+    reset();
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col pb-2">
@@ -40,7 +39,7 @@ export default function CourseForm() {
           <p className="text-sm text-red-500">{errors.name.message}</p>
         )}
       </div>
-      <button className="flex rounded-md bg-black text-gray-200 py-2 my-2 px-2 pr-4 my-0">
+      <button className="flex rounded-md bg-black text-gray-200 py-2 my-2 px-2 pr-4">
         <Plus />
         Add
       </button>

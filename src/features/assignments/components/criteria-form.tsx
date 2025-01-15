@@ -22,17 +22,19 @@ export default function CriteriaForm({ courses }: Props) {
     control,
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Criteria>({
     defaultValues: {
       course: "",
       grade: "",
-      description: "",
+      criteria: "",
     },
   });
 
   const onSubmit: SubmitHandler<Criteria> = async (data: Criteria) => {
     await addCriteriaAction(data);
+    reset();
   };
 
   return (
@@ -86,18 +88,18 @@ export default function CriteriaForm({ courses }: Props) {
         )}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="description">Description</Label>
+        <Label htmlFor="criteria">Description</Label>
         <Input
-          {...register("description", {
+          {...register("criteria", {
             required: "please enter a description.",
             minLength: {
               value: 2,
-              message: "The description needs to be longer.",
+              message: "The criteria needs to be longer.",
             },
           })}
         />
-        {errors.description && (
-          <p className="text-sm text-red-500">{errors.description.message}</p>
+        {errors.criteria && (
+          <p className="text-sm text-red-500">{errors.criteria.message}</p>
         )}
       </div>
       <button className="flex rounded-md bg-black text-gray-200 py-2 px-2 pr-4 my-2">

@@ -12,6 +12,9 @@ export function createRepository(db: Db) {
     async getAllCourses() {
       return db.select().from(course);
     },
+    async getAllCriteria() {
+      return db.select().from(criteria);
+    },
     async addAssignment(assignment: AssignmentType) {
       const assignmentId = uuidv4();
       await db.insert(assignments).values({
@@ -38,7 +41,7 @@ export function createRepository(db: Db) {
       await db.insert(criteria).values({
         course: newCriteria.course,
         grade: newCriteria.grade,
-        criteria: newCriteria.description,
+        criteria: newCriteria.criteria,
       });
     },
     async addCourse(name: string) {

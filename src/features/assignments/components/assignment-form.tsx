@@ -1,14 +1,35 @@
+"use client";
 import { Plus } from "lucide-react";
-import { AddAssignment, AssignmentType } from "../types";
+import { AddAssignment, AssignmentType, Criteria } from "../types";
 import { addAssignmentAction } from "../actions";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-export default function AssignmentForm() {
+type Props = {
+  criterias: Criteria[];
+};
+
+export default function AssignmentForm({ criterias }: Props) {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
-  } = useForm<AddAssignment>();
+  } = useForm<AddAssignment>({
+    defaultValues: {
+      assignment: "",
+      criteria: "",
+      description: "",
+    },
+  });
 
   const onSubmit: SubmitHandler<AddAssignment> = async (
     data: AssignmentType
@@ -16,56 +37,67 @@ export default function AssignmentForm() {
     await addAssignmentAction(data);
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col border-b-2 pb-2"
-    >
-      <input
-        type="text"
-        alt="name of assignment"
-        placeholder="Assignment"
-        className="py-2 px-2 pr-4 my-2 rounded-md mx-2"
-        {...register("assignment", {
-          required: true,
-          pattern: /^[A-Za-z1-9]+$/i,
-        })}
-      />
-      {errors.assignment && (
-        <span className="text-red-500 text-xs ml-2 pl-2">
-          This field is required
-        </span>
-      )}
-      <input
-        type="text"
-        alt="criteria"
-        placeholder="criteria"
-        className="py-2 px-2 pr-4 my-2 rounded-md mx-2"
-        {...register("criteria", {
-          required: true,
-          pattern: /^[A-Za-z1-9]+$/i,
-        })}
-      />
-      {errors.criteria && (
-        <span className="text-red-500 text-xs ml-2 pl-2">
-          This field is required
-        </span>
-      )}
-      <input
-        type="text"
-        alt="description"
-        placeholder="description"
-        className="my-2 py-2 px-2 pr-4 rounded-md mx-2"
-        {...register("description", {
-          required: true,
-          pattern: /^[A-Za-z1-9]+$/i,
-        })}
-      />
-      {errors.description && (
-        <span className="text-red-500 text-xs ml-2 pl-2">
-          This field is required
-        </span>
-      )}
-      <button className="flex rounded-md bg-black text-gray-200 py-2 mx-2 px-2 pr-4 my-0">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col pb-2">
+      <div className="space-y-2 mt-2">
+        <Label htmlFor="assignment">Assignment</Label>
+        <Input
+          {...register("assignment", {
+            required: "please the name of the course.",
+            minLength: {
+              value: 2,
+              message: "The name needs to be longer.",
+            },
+          })}
+        />
+        {errors.assignment && (
+          <p className="text-sm text-red-500">{errors.assignment.message}</p>
+        )}
+      </div>
+
+      <div className="space-y-2 mt-2">
+        <Label htmlFor="criteria">Criteria</Label>
+        <Controller
+          name="criteria"
+          control={control}
+          rules={{ required: "Pleas select a criteria" }}
+          render={({ field }) => (
+            <Select onValueChange={field.onChange} value={field.value}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="pick a criteria" />
+              </SelectTrigger>
+              {criterias && (
+                <SelectContent>
+                  {criterias?.map((criteria: Criteria) => (
+                    <SelectItem key={criteria.id} value={criteria.id!}>
+                      {criteria.criteria}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              )}
+            </Select>
+          )}
+        />
+        {errors.criteria && (
+          <p className="text-sm text-red-500">{errors.criteria.message}</p>
+        )}
+      </div>
+
+      <div className="space-y-2 mt-2">
+        <Label htmlFor="description">Description</Label>
+        <Input
+          {...register("description", {
+            required: "please the name of the course.",
+            minLength: {
+              value: 2,
+              message: "The name needs to be longer.",
+            },
+          })}
+        />
+        {errors.description && (
+          <p className="text-sm text-red-500">{errors.description.message}</p>
+        )}
+      </div>
+      <button className="flex rounded-md bg-black text-gray-200 py-2 px-2 pr-4 my-2">
         <Plus />
         Add
       </button>
