@@ -3,36 +3,44 @@ import { Plus } from "lucide-react";
 import { Course } from "../types";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { addCourseAction } from "../actions";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 export default function CourseForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Course>();
+  } = useForm<Course>({
+    defaultValues: {
+      name: "",
+    },
+  });
 
   const onSubmit: SubmitHandler<Course> = async (data: Course) => {
+    console.log(data);
+
     await addCourseAction(data.name);
+    data.name = "";
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col pb-2">
-      <input
-        type="text"
-        alt="name of course"
-        placeholder="Course"
-        className="py-2 px-2 pr-4 my-2 rounded-md mx-2"
-        {...register("name", {
-          required: true,
-          pattern: /^[a-öA-Ö\s]+$/i,
-        })}
-      />
-      {errors.name && (
-        <span className="text-red-500 text-xs ml-2 pl-2">
-          This field is required
-        </span>
-      )}
-
-      <button className="flex rounded-md bg-black text-gray-200 py-2 mx-2 px-2 pr-4 my-0">
+      <div className="space-y-2">
+        <Label htmlFor="name">Course name</Label>
+        <Input
+          {...register("name", {
+            required: "please the name of the course.",
+            minLength: {
+              value: 2,
+              message: "The name needs to be longer.",
+            },
+          })}
+        />
+        {errors.name && (
+          <p className="text-sm text-red-500">{errors.name.message}</p>
+        )}
+      </div>
+      <button className="flex rounded-md bg-black text-gray-200 py-2 my-2 px-2 pr-4 my-0">
         <Plus />
         Add
       </button>
