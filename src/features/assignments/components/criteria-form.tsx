@@ -54,11 +54,6 @@ export default function CriteriaForm({ courses }: Props) {
                     {course.name}
                   </SelectItem>
                 ))}
-                {/* <SelectItem value="44246493-08f0-4f79-9d5a-5b79e4f5d12d">
-                  c1
-                </SelectItem>
-                <SelectItem value="2">c2</SelectItem>
-                <SelectItem value="3">c3</SelectItem> */}
               </SelectContent>
             </Select>
           )}
