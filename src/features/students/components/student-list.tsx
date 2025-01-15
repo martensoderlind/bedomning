@@ -1,8 +1,8 @@
 import React from "react";
-import { db } from "../db/mockdb";
+import { db } from "../db/";
 import Student from "./student-row";
 
-export default function StudentList() {
+export function StudentList() {
   const students = db;
   return (
     <div className="container">

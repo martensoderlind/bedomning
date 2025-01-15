@@ -2,7 +2,7 @@ import React from "react";
 import CriteriaForm from "./criteria-form";
 import { assignmentService } from "../instance";
 
-export default async function CriteriaDashboard() {
+export async function CriteriaDashboard() {
   const courses = await assignmentService.getAllCourses();
   return (
     <div className="mx-8 my-4">

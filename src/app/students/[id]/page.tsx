@@ -1,4 +1,4 @@
-import StudentProfile from "@/features/students/components/student-profile";
+import { StudentProfile } from "@/features";
 import React from "react";
 
 type Params = {

@@ -2,7 +2,7 @@ import ClassInformation from "./class";
 import { studentsService } from "../instance";
 import AddClassButton from "./add-class-button";
 
-export default async function ClassDashboard() {
+export async function ClassDashboard() {
   const classes = await studentsService.getAllClasses();
   const lastClassIndex = classes.length;
   return (

@@ -1,4 +1,4 @@
-import StudentList from "@/features/students/components/student-list";
+import { StudentList } from "@/features";
 import React from "react";
 
 export default function Page() {

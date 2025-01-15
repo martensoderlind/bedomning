@@ -1,4 +1,4 @@
-import CourseDashboard from "@/features/assignments/components/course-dashboard";
+import { CourseDashboard } from "@/features/";
 import React from "react";
 
 export default function Page() {

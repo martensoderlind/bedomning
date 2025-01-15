@@ -2,15 +2,15 @@
 import { Plus } from "lucide-react";
 import { Course, Criteria } from "../types";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Label } from "../../../components/ui/label";
 import {
+  Label,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
-import { Input } from "@/components/ui/input";
+  Input,
+} from "@/components/";
 import { addCriteriaAction } from "../actions";
 
 type Props = {

@@ -1,4 +1,4 @@
-import AssignmentDashboard from "@/features/assignments/components/assignment-dashboard";
+import { AssignmentDashboard } from "@/features/";
 import React from "react";
 
 export default function Page() {

@@ -1,4 +1,4 @@
-import AddClass from "@/features/students/components/add-class";
+import { AddClass } from "@/features/";
 import React from "react";
 
 export default function Page() {

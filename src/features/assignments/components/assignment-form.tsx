@@ -1,17 +1,16 @@
 "use client";
 import { Plus } from "lucide-react";
 import { AddAssignment, AssignmentType, Criteria } from "../types";
-import { addAssignmentAction } from "../actions";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+  Input,
+  Label,
+} from "@/components";
 
 type Props = {
   criterias: Criteria[];
@@ -34,7 +33,8 @@ export default function AssignmentForm({ criterias }: Props) {
   const onSubmit: SubmitHandler<AddAssignment> = async (
     data: AssignmentType
   ) => {
-    await addAssignmentAction(data);
+    console.log(data);
+    // await addAssignmentAction(data);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col pb-2">

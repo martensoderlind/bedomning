@@ -3,7 +3,7 @@ import Assignment from "./assignment";
 import { assignmentService } from "../instance";
 import AssignmentHeader from "./assignment-header";
 
-export default async function AssignmentDashboard() {
+export async function AssignmentDashboard() {
   const assignments = await assignmentService.getAll();
   console.log(assignments);
   if (!assignments) {
