@@ -1,5 +1,5 @@
 import { Db } from "@/db";
-import { assignmentCriteria, assignments, course, criteria } from "./db/schema";
+import { assignmentCriteria, assignments, course, criteria } from "./db";
 import { AssignmentType, Criteria } from "./types";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
