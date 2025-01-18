@@ -9,4 +9,5 @@ export const student = pgTable("student", {
   name: varchar("name").notNull(),
   email: varchar("email").notNull(),
   className: varchar("class").notNull(),
+  grade: varchar("grade"),
 });

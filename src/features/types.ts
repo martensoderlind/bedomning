@@ -1,8 +1,8 @@
 export type StudentType = {
-  id: number;
+  id: string;
   name: string;
   email: string;
-  class: string;
+  className: string;
   grade: string;
 };
 

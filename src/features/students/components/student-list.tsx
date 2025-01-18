@@ -1,9 +1,9 @@
 import React from "react";
-import { db } from "../db/";
 import Student from "./student-row";
+import { studentsService } from "../instance";
 
-export function StudentList() {
-  const students = db;
+export async function StudentList() {
+  const students = await studentsService.getAllStudents();
   return (
     <div className="container">
       <p className="text-2xl font-bold mx-8 my-4">Students</p>

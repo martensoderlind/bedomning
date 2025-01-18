@@ -36,31 +36,13 @@ export default function Menu() {
         <p className="pt-1 pl-2">Classes</p>
       </Link>
       <Link
-        href={"/assignments"}
+        href={"/course-management"}
         className={`flex ml-2 my-2 p-2 text-slate-500 hover:text-slate-900 ${
-          isActive("/assignments") ? "bg-slate-200 rounded-md" : undefined
+          isActive("/course-management") ? "bg-slate-200 rounded-md" : undefined
         }`}
       >
         <FileText />
-        <p className="pt-1 pl-2">Assignments</p>
-      </Link>
-      <Link
-        href={"/course"}
-        className={`flex ml-2 my-2 p-2 text-slate-500 hover:text-slate-900 ${
-          isActive("/course") ? "bg-slate-200 rounded-md" : undefined
-        }`}
-      >
-        <FileText />
-        <p className="pt-1 pl-2">Course</p>
-      </Link>
-      <Link
-        href={"/criteria"}
-        className={`flex ml-2 my-2 p-2 text-slate-500 hover:text-slate-900 ${
-          isActive("/criteria") ? "bg-slate-200 rounded-md" : undefined
-        }`}
-      >
-        <FileText />
-        <p className="pt-1 pl-2">Criteria</p>
+        <p className="pt-1 pl-2">Course management</p>
       </Link>
     </div>
   );
