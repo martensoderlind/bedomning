@@ -11,6 +11,7 @@ import {
   Input,
 } from "@/components/";
 import { ClassInfo, StudentType } from "@/features/types";
+import { addStudentAction } from "../actions";
 
 type Props = {
   classes: ClassInfo[];
@@ -32,8 +33,8 @@ export default function StudentForm({ classes }: Props) {
     },
   });
 
-  const onSubmit: SubmitHandler<ClassInfo> = async (data: ClassInfo) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<StudentType> = async (data: StudentType) => {
+    await addStudentAction(data);
     reset();
   };
 

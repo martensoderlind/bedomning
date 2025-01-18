@@ -1,5 +1,6 @@
 import { Db } from "@/db";
 import { createRepository } from "./repository";
+import { StudentType } from "../types";
 
 export function createService(db: Db) {
   const repository = createRepository(db);
@@ -12,6 +13,9 @@ export function createService(db: Db) {
     },
     addClass: async (name: string) => {
       await repository.addClass(name);
+    },
+    addStudent: async (student: StudentType) => {
+      await repository.addStudent(student);
     },
     deleteClass: async (id: string) => {
       await repository.deleteClass(id);
