@@ -1,16 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { AssignmentType, Criteria } from "./types";
+import { AddAssignment, Criteria } from "./types";
 import { assignmentService } from "./instance";
 
-export async function addAssignmentAction(assignment: AssignmentType) {
+export async function addAssignmentAction(assignment: AddAssignment) {
   assignmentService.addAssignment(assignment);
-  revalidatePath("/assignments");
+  revalidatePath("/course-management/assignments");
 }
 export async function addCourseAction(name: string) {
   await assignmentService.addCourse(name);
-  revalidatePath("/assignments");
+  revalidatePath("/course-management/assignments");
 }
 export async function addCriteriaAction(criteria: Criteria) {
   await assignmentService.addCriteria(criteria);

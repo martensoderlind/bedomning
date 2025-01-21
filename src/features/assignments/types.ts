@@ -18,15 +18,23 @@ export type Criteria = {
   criteria: string;
   grade: string;
 };
+export type CriteriaForm = {
+  id: string;
+};
+
 export type AddAssignment = {
   id: string;
   assignment: string;
   course: string;
-  criteria: string;
+  criteria: CriteriaForm[];
   description: string;
 };
 
 export type Course = {
   id: string;
   name: string;
+};
+export type AssignmentCriteria = {
+  assignmentId: string;
+  criteriaId: string;
 };

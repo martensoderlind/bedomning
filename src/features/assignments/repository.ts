@@ -1,8 +1,7 @@
 import { Db } from "@/db";
 import { assignmentCriteria, assignments, course, criteria } from "./db";
-import { AssignmentType, Criteria } from "./types";
+import { AssignmentType, Criteria, CriteriaForm } from "./types";
 import { eq } from "drizzle-orm";
-import { v4 as uuidv4 } from "uuid";
 
 export function createRepository(db: Db) {
   return {
@@ -15,24 +14,24 @@ export function createRepository(db: Db) {
     async getAllCriteria() {
       return db.select().from(criteria);
     },
-    async addAssignment(assignment: AssignmentType) {
-      const assignmentId = uuidv4();
+    async addAssignmentCriteria(
+      criteriaIds: CriteriaForm[],
+      assignmentId: string
+    ) {
+      const valuesToInsert = criteriaIds.map((criteriaId) => ({
+        assignmentId: assignmentId,
+        criteriaId: criteriaId.id,
+      }));
+
+      await db.insert(assignmentCriteria).values(valuesToInsert);
+    },
+    async addAssignment(assignment: AssignmentType, id: string) {
       await db.insert(assignments).values({
-        id: assignmentId,
+        id: id,
         assignment: assignment.assignment,
         course: assignment.course,
         description: assignment.description,
       });
-      await db.insert(assignmentCriteria).values([
-        {
-          assignmentId: assignmentId,
-          criteriaId: "första-criteria-id",
-        },
-        {
-          assignmentId: assignmentId,
-          criteriaId: "andra-criteria-id",
-        },
-      ]);
     },
     async deleteAssignment(id: string) {
       db.delete(assignments).where(eq(assignments.id, id));
