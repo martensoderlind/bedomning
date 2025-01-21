@@ -3,7 +3,7 @@ export type StudentType = {
   name: string;
   email: string;
   className: string;
-  grade: string;
+  grade: string | null;
 };
 
 export type ClassInfo = {
