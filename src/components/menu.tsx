@@ -4,7 +4,7 @@ import SideMenuLink from "./side-menu-link";
 
 export default function Menu() {
   return (
-    <div className="h-screen bg-white border-r w-auto px-2 pr-4">
+    <div className="h-screen bg-white border-r md:w-72 px-2 pr-4">
       <SideMenuLink route="home">
         <House />
       </SideMenuLink>
